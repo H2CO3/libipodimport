@@ -1,0 +1,28 @@
+libipodimport - damn simple iPod import support library for iOS 5+
+
+Written by Árpád Goretity, 2012.
+
+See LICENSE for the license.
+
+Thanks for all contributions; special thanks to (in alphabetical order):
+@albert_sn
+@bensge
+@fab1us
+@SmartviperE75
+
+##################################
+
+Usage:
+
+    NSString *songPath = @"/var/mobile/SomeSong.mp3"; // may be M4A, AAC, etc. as well
+    NSDictionary *metadata = [NSDictionary dictionaryWithObjectsAndKeys:
+        @"Song Title", kIPIKeyTitle,
+        @"Author or Singer", kIPIKeyArtist,
+        @"Heavy metal", kIPIKeyGenre,
+        [NSNumber numberWithInt:durationInSeconds * 1000], kIPIKeyDuration,
+        [NSNumber numberWithInt:releaseYearOfTheSong], kIPIKeyYear,
+        nil
+    ];
+    [[IPIPodImporter sharedInstance] importFileAtPath:songPath withMetadata:metadata];
+
+The import occurs almost instantly, on the test device it never took longer than 3 seconds.
