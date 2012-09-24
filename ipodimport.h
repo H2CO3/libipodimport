@@ -9,7 +9,10 @@
  * (See LICENSE for furhter information)
  */
 
-#import <Foundation/Foundation.h>
+#ifndef __IPODIMPORT_H__
+#define __IPODIMPORT_H__
+
+#include <Foundation/Foundation.h>
 
 #define kIPIKeyPath		@"path"		// NSString, filesystem path to the file to be imported
 #define kIPIKeyTitle		@"title"	// NSString, title of the song
@@ -24,3 +27,5 @@
 - (void)importFileAtPath:(NSString *)path withMetadata:(NSDictionary *)metadata;
 
 @end
+
+#endif /* __IPODIMPORT_H__ */

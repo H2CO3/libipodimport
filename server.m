@@ -58,7 +58,6 @@ void ipodimport_messageHandler(id self, SEL _cmd, NSString *name, NSDictionary *
 	[downl release];
 }
 
-
 __attribute__((constructor))
 void init()
 {
@@ -75,4 +74,3 @@ void init()
 		&_orig_SpringBoard_init
 	);
 }
-

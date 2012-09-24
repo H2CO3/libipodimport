@@ -39,6 +39,7 @@ static id shared = nil;
 	// And actually call the server
 	CPDistributedMessagingCenter *center = [CPDistributedMessagingCenter centerNamed:@"org.h2co3.ipodimport"];
 	[center sendMessageName:@"org.h2co3.ipodimport.exec" userInfo:info];
+	[info release];
 }
 
 @end
