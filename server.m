@@ -33,18 +33,21 @@ void ipodimport_messageHandler(id self, SEL _cmd, NSString *name, NSDictionary *
 {
 	NSString *path = [userInfo objectForKey:kIPIKeyPath];
 	NSDictionary *dict = [NSDictionary dictionaryWithObject:[NSNumber numberWithInt:0] forKey:@"is-in-queue"];
-	
+
+	// Pre-initialize metadata with required defaults	
 	SSDownloadMetadata *metad = [[SSDownloadMetadata alloc] initWithDictionary:dict];
-	[metad setKind:@"song"];
 	[metad setCopyright:@"This song was added to iPod using libipodimport by H2CO3."];
 	[metad setPurchaseDate:[NSDate date]]; // now
 	[metad setViewStoreItemURL:[NSURL URLWithString:@"http://twitter.com/H2CO3_iOS"]];
 	[metad setPrimaryAssetURL:[NSURL fileURLWithPath:path]];
 	[metad setReleaseDate:[NSDate date]]; // now
 
-	
+	// Set user-defined fields
+	NSString *kind = [userInfo objectForKey:kIPIKeyMediaType];
+	[metad setKind:kind != nil ? kind : kIPIMediaSong];
 	[metad setTitle:[userInfo objectForKey:kIPIKeyTitle]]; // NSString
 	[metad setArtistName:[userInfo objectForKey:kIPIKeyArtist]]; // NSString
+	[metad setCollectionName:[userInfo objectForKey:kIPIKeyAlbum]]; // NSString
 	[metad setGenre:[userInfo objectForKey:kIPIKeyGenre]]; // NSString
 	[metad setDurationInMilliseconds:[userInfo objectForKey:kIPIKeyDuration]]; // NSNumber, int
 	[metad setReleaseYear:[userInfo objectForKey:kIPIKeyYear]]; // NSNumber, int
