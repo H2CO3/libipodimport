@@ -53,15 +53,15 @@ void ipodimport_messageHandler(id self, SEL _cmd, NSString *name, NSDictionary *
 	[metad setReleaseYear:[userInfo objectForKey:kIPIKeyYear]]; // NSNumber, int
     
     //Artwork
-    if([userInfo objectForKey:kIPIKeyArtworkURL] != NULL) {
-        [metad setThumbnailImageURL:[NSURL fileURLWithPath:[userInfo objectForKey:kIPIKeyImageURL]]];
+    if([userInfo objectForKey:kIPIKeyArtworkPath] != NULL) {
+        [metad setThumbnailImageURL:[NSURL fileURLWithPath:[userInfo objectForKey:kIPIKeyArtworkPath]]];
         [metad setArtworkIsPrerendered:NO];
     }
 	
 	SSDownloadQueue *dlQueue = [[SSDownloadQueue alloc] initWithDownloadKinds:[SSDownloadQueue mediaDownloadKinds]];
 	SSDownload *downl = [[SSDownload alloc] initWithDownloadMetadata:metad];
     
-    if([userInfo objectForKey:kIPIKeyImageURL] != NULL) {
+    if([userInfo objectForKey:kIPIKeyArtworkPath] != NULL) {
         [downl loadThumbnailImageDataWithCompletionBlock:^{
             NSLog(@"Thumbnail Image Added Succesfully");
         }];

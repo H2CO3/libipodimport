@@ -23,7 +23,7 @@
 #define kIPIKeyDuration		@"duration"	// NSNumber with `int`, duration in milliseconds
 #define kIPIKeyYear		@"year"		// NSNumber with `int`
 #define kIPIKeyMediaType	@"type"		// One of the kIPIMedia constants, media type, defaults to kIPIMediaSong if unspecified
-#define kIPIKeyArtworkURL @"artworkURL" // NSString with the path to the Artwork Image
+#define kIPIKeyArtworkPath @"artworkPath" // NSString with the path to the Artwork Image
 
 // Media type keys
 #define kIPIMediaSong		@"song"		// Song, music
