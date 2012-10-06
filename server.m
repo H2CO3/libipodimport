@@ -54,7 +54,6 @@ void ipodimport_messageHandler(id self, SEL _cmd, NSString *name, NSDictionary *
 	
 	SSDownloadQueue *dlQueue = [[SSDownloadQueue alloc] initWithDownloadKinds:[SSDownloadQueue mediaDownloadKinds]];
 	SSDownload *downl = [[SSDownload alloc] initWithDownloadMetadata:metad];
-	[metad release];
 	[downl setDownloadHandler:nil completionBlock:^{
 		[dlQueue release];
 	}];
